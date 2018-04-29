@@ -1,1 +1,30 @@
 
+== mapping
+
+Solidity provides a data structure called a mapping, which provides a "key\value"-like type. A mapping is define with the following syntax:
+
+`mapping(keyType => valueType);`
+
+So, to create a mapping, called balances, with an address and the key and an unsigned integer as the value, you would use the following syntax:
+
+`mapping(address => uint) balances;`
+
+A mapping is somewhat similar to a hashtable in Java or an associative array in PHP. However, there are some noticable differences that you must be aware of. 
+
+* The keyType cannot be another mapping, dynamically sized array, contract, enum or struct, whereas the valueType can be defined as data type available in Solidity. A nested mapping could look like this:
+
+`mapping(address => mapping(address => uint)) accountDelegates;`
+
+* There is no length property of a mapping; you must keep track of the length yourself. A common method of doing this is to include a corresponding counter that gets incremented each time you add something to the mapping, as shown below:
+
+
+----
+uint public  numberOfBalances;
+mapping(address => uint) public balances;
+----
+Then later
+
+----
+balances[_address] = 100;
+numberOfBalances++;
+----
