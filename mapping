@@ -1,4 +1,0 @@
-Mapping
-
-Solidity provides a data structure called a mapping, which functions similarly to a hash table in Jave, an associative array in PHP and similar constructs in other languages.
-It allows to you to create a "key/value" pair. 
