@@ -15,6 +15,12 @@ A mapping is somewhat similar to a hashtable in Java or an associative array in 
 
 `mapping(address => mapping(address => uint)) accountDelegates;`
 
+* The key values are stored as a keccak256 hashes, and hence, the keccak256 hash of a key's data is used to look up a value. 
+
+* If a value doesn't exist, a 0 will be returned. A downside to this, is the case where 0 is a valid value in a mapping. In the case of a mapping that points to a struct, an empty struct will be returned.  
+
+* You cannot iterate over a mapping because it doesn't have indices.
+
 * There is no length property of a mapping; you must keep track of the length yourself. A common method of doing this is to include a corresponding counter that gets incremented each time you add something to the mapping, as shown below:
 
 
